@@ -1,7 +1,9 @@
 package com.example.harrypotter
 
-import android.graphics.Bitmap
+
 import android.graphics.BitmapFactory
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_medium_single.*
 import java.util.*
 
@@ -22,11 +25,20 @@ class MediumSingle : AppCompatActivity() {
     var randomCards = ArrayList<Int>()
     var homeList = ArrayList<Int>()
     val db = Firebase.firestore
+    var mediaPlayer :MediaPlayer?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medium_single)
+        textView = findViewById(R.id.Time1)
+        object : CountDownTimer(45000, 1000) {
 
-
+            override fun onTick(millisUntilFinished: Long) {
+                textView.setText("süre: " + millisUntilFinished / 1000)
+            }
+            override fun onFinish() {
+                textView.setText("oyun bitti!")
+            }
+        }.start()
         val card_matrix = ArrayList<ArrayList<Int>>()
         var row1 = ArrayList(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11))
         var row2 = ArrayList(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11))
@@ -77,15 +89,35 @@ class MediumSingle : AppCompatActivity() {
         println(randomCards)
         println(homeList)
         println(card_home)
-        card_home[0].shuffle()
+
+
+
+        for (i in 0..15)
+        {
+            random_number = (0..15).random()
+
+            temp = card_home[0][i]
+            card_home[0][i] = card_home[0][random_number]
+            card_home[0][random_number] = temp
+
+            temp = card_home[1][i]
+            card_home[1][i] = card_home[1][random_number]
+            card_home[1][random_number] = temp
+
+        }
         println(card_home)
 
-
         harry = buttons.indices.map { index ->
-            Mem(randomCards[index])
+            var temp3= mutableListOf<Int>(card_home[0][index],card_home[1][index])
+            Mem(temp3)
         }
 
-
+        switch4.setOnCheckedChangeListener { compoundButton, b ->
+            if (b)//hatalı
+                playsound()
+            else
+                stop()
+        }
 
         buttons.forEachIndexed { index, button ->
             button.setOnClickListener {
@@ -103,6 +135,7 @@ class MediumSingle : AppCompatActivity() {
                 button.alpha = 0.1f
             }
             if (card.isFaceUp) {
+
                 db.collection(homeList[index].toString())// (1..4).random().toString()
                     .whereEqualTo("cardID", randomCards[index])
                     .get()
@@ -116,7 +149,7 @@ class MediumSingle : AppCompatActivity() {
                         println("başarısız")
                     }
 
-
+                if ( homeList[index]==4&&randomCards[index]==10)playSound(R.raw.nirvana)
             }
             else {
                 button.setImageResource(R.drawable.cardback)
@@ -138,6 +171,7 @@ class MediumSingle : AppCompatActivity() {
         if (indexOfSingleSelectedCard == null) {
             // 0 or 2 selected harry previously
             restoreCards()
+
             indexOfSingleSelectedCard = position
         } else {
             // exactly 1 card was selected previously
@@ -156,9 +190,37 @@ class MediumSingle : AppCompatActivity() {
 
     private fun checkForMatch(position1: Int, position2: Int) {
         if (harry[position1].identifier == harry[position2].identifier) {
+
             Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
+            playSound(R.raw.happy)
+
+        }else
+        {
+            playSound(R.raw.shocked_sound_effect)
         }
+    }
+    fun playSound( soundType: Int){
+
+            mediaPlayer= MediaPlayer.create(this,soundType)
+            mediaPlayer!!.isLooping=false
+            mediaPlayer!!.start()
+
+    }
+    fun playsound(){
+        if (mediaPlayer == null){
+            mediaPlayer=MediaPlayer.create(this,R.raw.prologue)
+            mediaPlayer!!.isLooping=true
+            mediaPlayer!!.start()
+        }else{
+            mediaPlayer!!.start()}
+    }
+    fun stop(){
+        if(mediaPlayer?.isPlaying==true) {
+
+            mediaPlayer?.pause()
+        }
+
     }
 }

@@ -3,5 +3,5 @@ package com.example.harrypotter
 
 
 
- class Mem(val identifier: Int, var isFaceUp: Boolean = false, var isMatched: Boolean = false)
+ class Mem(val identifier: MutableList<Int>, var isFaceUp: Boolean = false, var isMatched: Boolean = false)
 
