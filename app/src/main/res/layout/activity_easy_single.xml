@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/cardback" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/cardback" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/cardback" />
 
 
     <ImageView
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/cardback" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

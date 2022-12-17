@@ -17,10 +17,9 @@ import com.google.firebase.ktx.Firebase
 
 
 class Login : AppCompatActivity() {
-
     lateinit var etEmail: EditText
     private lateinit var etPass: EditText
-    private lateinit var  auth: FirebaseAuth
+   private lateinit var  auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_login)
@@ -33,6 +32,7 @@ class Login : AppCompatActivity() {
         val password=etPass.text.toString()
 
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
+
             if(task.isSuccessful){
                 val intent= Intent(this,MainActivity::class.java)
                 startActivity(intent)

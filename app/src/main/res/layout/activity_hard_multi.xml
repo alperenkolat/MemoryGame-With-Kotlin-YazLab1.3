@@ -37,37 +37,37 @@
                 android:id="@+id/imageView17"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView18"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView19"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView20"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView21"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView22"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -80,37 +80,37 @@
                 android:id="@+id/imageView23"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView24"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView25"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView26"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView27"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView28"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -123,37 +123,37 @@
                 android:id="@+id/imageView29"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView30"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView31"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView32"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView33"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView34"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
         </TableRow>
 
@@ -165,37 +165,37 @@
                 android:id="@+id/imageView35"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView36"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView37"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView38"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView39"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView40"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -208,37 +208,37 @@
                 android:id="@+id/imageView41"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView42"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView43"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView44"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView45"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView46"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -251,37 +251,37 @@
                 android:id="@+id/imageView47"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView48"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView49"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView50"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView51"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView52"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
