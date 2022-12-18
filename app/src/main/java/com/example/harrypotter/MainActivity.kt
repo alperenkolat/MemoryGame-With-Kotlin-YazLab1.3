@@ -25,14 +25,15 @@ class MainActivity : AppCompatActivity() {
             var KullaniciBilgisi=binding.etMail.text.toString()
             var KullanciPass=binding.etSifre.text.toString()
             println(KullaniciBilgisi)
-
-            val user = auth.currentUser
+/*            val user = auth.currentUser
             if(user != null)
             {
                 intent =Intent(applicationContext,Home::class.java)
                 startActivity(intent)
-               }
-           /* auth.signInWithEmailAndPassword(KullaniciBilgisi, KullanciPass)
+               }*/
+            if (!KullaniciBilgisi.isEmpty()&&!KullanciPass.isEmpty()){
+
+                auth.signInWithEmailAndPassword(KullaniciBilgisi, KullanciPass)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -50,12 +51,20 @@ class MainActivity : AppCompatActivity() {
                        //intent =Intent(applicationContext,MainActivity::class.java)
                         //startActivity(intent)
                     }
-               }*/
-        }
-        binding.btnKayit.setOnClickListener{
-            intent =Intent(applicationContext,Register2::class.java)
-            startActivity(intent)
+               }
+                binding.btnKayit.setOnClickListener{
+                    intent =Intent(applicationContext,Register2::class.java)
+                    startActivity(intent)
 
+                }
+            }
+
+            else{
+
+
+            Toast.makeText(baseContext, "Boş bırakmayın!",
+                Toast.LENGTH_LONG).show()
+        }
         }
 
     }

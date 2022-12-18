@@ -51,21 +51,12 @@ class HardSingle : AppCompatActivity() {
         var card_home = ArrayList<ArrayList<Int>>()
         var temp = 0
         var random_number = 0
-
-        for (i in 0..35)
-        {
-            homeList.add((1..4).random())
-            random_number = (0..35).random()
-
-
-        }
-
-
         for (i in 0..17)
         {
-            temp = (1..card_matrix[homeList[i].toInt()-1].size-1).random()
+            homeList.add((1..4).random())
+            temp = (1..card_matrix[homeList[i]-1].size-1).random()
 
-            randomCards.add(card_matrix[homeList[i].toInt()-1][temp])
+            randomCards.add(card_matrix[homeList[i]-1][temp])
 
             card_matrix[homeList[i].toInt()-1].removeAt(temp)
         }

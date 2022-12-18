@@ -3,7 +3,6 @@ package com.example.harrypotter
 
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -13,12 +12,12 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_medium_single.*
 import java.util.*
 
 class MediumSingle : AppCompatActivity() {
     lateinit var textView : TextView
+    lateinit var score:TextView
     private lateinit var buttons: List<ImageView>
     private lateinit var harry: List<Mem>
     private var indexOfSingleSelectedCard: Int? = null
@@ -34,6 +33,7 @@ class MediumSingle : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medium_single)
         textView = findViewById(R.id.Time1)
+        score = findViewById(R.id.Score1)
         object : CountDownTimer(45000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
@@ -57,11 +57,9 @@ class MediumSingle : AppCompatActivity() {
 
         var card_home = ArrayList<ArrayList<Int>>()
 
-
-
         var temp = 0
         var random_number = 0
-        val screen = ArrayList(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
+/*        val screen = ArrayList(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))*/
         /*
         for (i in 0..7)
         {
@@ -70,9 +68,7 @@ class MediumSingle : AppCompatActivity() {
             temp = screen[i]
             screen[i] = screen[random_number]
             screen[random_number] = temp
-
         }*/
-
 
         for (i in 0..7)
         {
@@ -226,6 +222,7 @@ class MediumSingle : AppCompatActivity() {
 
             userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
             println("Score" + userScore)
+            score.setText("Score:"+userScore)
 
         }else
         {
@@ -249,6 +246,7 @@ class MediumSingle : AppCompatActivity() {
 
                 userScore -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
             }
+            score.setText("Score:"+userScore)
             println("Score" + userScore)
 
         }

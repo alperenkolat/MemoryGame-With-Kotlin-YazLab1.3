@@ -10,26 +10,42 @@
         android:id="@+id/Time1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="76dp"
-        android:background="@color/black"
-        android:text="TextView"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="33dp"
+
+
+        android:layout_marginEnd="2dp"
+        android:text="süre:45"
         android:textColor="#ff0000"
-        android:textSize="36sp"
-        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/Score1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/switch4" />
+
+    <TextView
+        android:id="@+id/Score1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="score:0"
+        android:textColor="#00ff00"
+
+
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Time1"
+        app:layout_constraintTop_toBottomOf="@+id/switch4" />
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="372dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="191dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -39,37 +55,37 @@
                 android:id="@+id/imageView17"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView18"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView19"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView20"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView21"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView22"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -82,37 +98,37 @@
                 android:id="@+id/imageView23"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView24"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView25"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView26"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView27"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView28"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -125,37 +141,37 @@
                 android:id="@+id/imageView29"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView30"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView31"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView32"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView33"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView34"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
         </TableRow>
 
@@ -167,37 +183,37 @@
                 android:id="@+id/imageView35"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView36"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView37"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView38"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView39"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView40"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -210,37 +226,37 @@
                 android:id="@+id/imageView41"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView42"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView43"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView44"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView45"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView46"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -253,37 +269,37 @@
                 android:id="@+id/imageView47"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView48"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView49"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView50"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView51"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
             <ImageView
                 android:id="@+id/imageView52"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                tools:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/cardback" />
 
 
         </TableRow>
@@ -294,8 +310,9 @@
         android:id="@+id/switch4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="45dp"
         android:text="Switch"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Time1"
-        app:layout_constraintStart_toEndOf="@+id/Time1" />
+        app:layout_constraintStart_toEndOf="@+id/Time1"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

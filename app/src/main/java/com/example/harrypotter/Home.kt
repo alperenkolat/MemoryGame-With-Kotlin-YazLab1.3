@@ -11,7 +11,6 @@ import com.example.harrypotter.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_home.*
 
 class Home : AppCompatActivity() {
-    lateinit var textView : TextView
     var mediaPlayer :MediaPlayer?=null
     lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +18,7 @@ class Home : AppCompatActivity() {
 
 
         setContentView(R.layout.activity_home)
-        textView = findViewById(R.id.Time1)
+
 
 
 
@@ -44,22 +43,7 @@ class Home : AppCompatActivity() {
         }
 
 
-      //  mediaPlayer.start()
-        // time count down for 30 seconds,
-        // with 1 second as countDown interval
-        object : CountDownTimer(45000, 1000) {
 
-            // Callback function, fired on regular interval
-            override fun onTick(millisUntilFinished: Long) {
-                textView.setText("süre/time " + millisUntilFinished / 1000)
-            }
-
-            // Callback function, fired
-            // when the time is up
-            override fun onFinish() {
-                textView.setText("oyun bitti!")
-            }
-        }.start()
     }
     fun playsound(){
         if (mediaPlayer == null){
