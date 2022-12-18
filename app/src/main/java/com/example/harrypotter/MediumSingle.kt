@@ -26,6 +26,10 @@ class MediumSingle : AppCompatActivity() {
     var homeList = ArrayList<Int>()
     val db = Firebase.firestore
     var mediaPlayer :MediaPlayer?=null
+    var cardScore = ArrayList(Arrays.asList(0,0,0,0)) //Eklendi
+    var userScore = 0
+    var secondUntilFinished = 0 // Eklendi
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medium_single)
@@ -34,6 +38,7 @@ class MediumSingle : AppCompatActivity() {
 
             override fun onTick(millisUntilFinished: Long) {
                 textView.setText("süre: " + millisUntilFinished / 1000)
+                secondUntilFinished = (millisUntilFinished / 1000).toInt() // Eklendi
             }
             override fun onFinish() {
                 textView.setText("oyun bitti!")
@@ -57,22 +62,24 @@ class MediumSingle : AppCompatActivity() {
         var temp = 0
         var random_number = 0
         val screen = ArrayList(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
+        /*
         for (i in 0..7)
         {
-            homeList.add((1..4).random())
+            //homeList.add((1..4).random())
             random_number = (0..15).random()
             temp = screen[i]
             screen[i] = screen[random_number]
             screen[random_number] = temp
 
-        }
+        }*/
 
 
         for (i in 0..7)
         {
-            temp = (1..card_matrix[homeList[i].toInt()-1].size-1).random()
+            homeList.add((1..4).random())
+            temp = (1..card_matrix[homeList[i]-1].size-1).random()
 
-            randomCards.add(card_matrix[homeList[i].toInt()-1][temp])
+            randomCards.add(card_matrix[homeList[i]-1][temp])
 
             card_matrix[homeList[i].toInt()-1].removeAt(temp)
         }
@@ -144,6 +151,17 @@ class MediumSingle : AppCompatActivity() {
                             val imageBytes = Base64.decode(document.get("cardImage") as String, Base64.DEFAULT)
                             val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
                             button.setImageBitmap(decodedImage)
+
+                            if(cardScore[0] == 0)
+                            {
+                                cardScore[0] = (document.get("cardScore").toString()).toInt()
+                                cardScore[1] = homeList[index]
+                            }
+                            else
+                            {
+                                cardScore[2] =  (document.get("cardScore").toString()).toInt()
+                                cardScore[3] = homeList[index]
+                            }
                         }
                     }.addOnFailureListener{
                         println("başarısız")
@@ -189,6 +207,15 @@ class MediumSingle : AppCompatActivity() {
     }
 
     private fun checkForMatch(position1: Int, position2: Int) {
+        var homeScore = 0
+        //while(cardScore[2] != 0)
+
+
+        if(cardScore[1] == 1 || cardScore[1] == 2 )
+        { homeScore = 2 }
+        else
+        { homeScore = 1 }
+
         if (harry[position1].identifier == harry[position2].identifier) {
 
             Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
@@ -196,10 +223,37 @@ class MediumSingle : AppCompatActivity() {
             harry[position2].isMatched = true
             playSound(R.raw.happy)
 
+
+            userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
+            println("Score" + userScore)
+
         }else
         {
             playSound(R.raw.shocked_sound_effect)
+
+            if(cardScore[1] == cardScore[3] )
+            {
+                userScore -= (cardScore[0] + cardScore[2]/homeScore) * ((60 - secondUntilFinished)/10)
+            }
+            else
+            {
+                if(cardScore[1] == 1 || cardScore[1] == 2 )
+                { homeScore = 2 }
+                else
+                { homeScore = 1 }
+
+                if(cardScore[3] == 1 || cardScore[3] == 2 )
+                { homeScore *= 2 }
+                else
+                { homeScore *= 1 }
+
+                userScore -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
+            }
+            println("Score" + userScore)
+
         }
+
+        cardScore[0] = 0 //Sıfırladık
     }
     fun playSound( soundType: Int){
 
@@ -213,8 +267,11 @@ class MediumSingle : AppCompatActivity() {
             mediaPlayer=MediaPlayer.create(this,R.raw.prologue)
             mediaPlayer!!.isLooping=true
             mediaPlayer!!.start()
+
+
         }else{
-            mediaPlayer!!.start()}
+            mediaPlayer!!.start()
+        }
     }
     fun stop(){
         if(mediaPlayer?.isPlaying==true) {
