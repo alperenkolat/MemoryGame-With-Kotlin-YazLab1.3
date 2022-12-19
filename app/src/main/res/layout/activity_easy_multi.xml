@@ -79,7 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginBottom="16dp"
-        android:text="Switch"
+        android:text="ses"
+        android:checked="true"
         app:layout_constraintBottom_toTopOf="@+id/Time1"
         app:layout_constraintStart_toEndOf="@+id/Time1" />
 

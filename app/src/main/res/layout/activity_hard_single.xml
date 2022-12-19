@@ -10,14 +10,16 @@
         android:id="@+id/Time1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
 
 
-        android:layout_marginEnd="2dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
         android:text="süre:45"
         android:textColor="#ff0000"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toStartOf="@+id/Score1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch4" />
@@ -26,12 +28,15 @@
         android:id="@+id/Score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="24dp"
+
+
         android:text="score:0"
         android:textColor="#00ff00"
-
-
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Time1"
         app:layout_constraintTop_toBottomOf="@+id/switch4" />
@@ -42,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="191dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -310,9 +315,10 @@
         android:id="@+id/switch4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="45dp"
-        android:text="Switch"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:text="ses"
+        android:checked="true"
         app:layout_constraintStart_toEndOf="@+id/Time1"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

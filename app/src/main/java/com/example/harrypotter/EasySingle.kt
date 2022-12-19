@@ -1,6 +1,7 @@
 package com.example.harrypotter
 
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -28,13 +29,14 @@ class EasySingle : AppCompatActivity() {
     var cardScore = ArrayList(Arrays.asList(0,0,0,0)) //Eklendi
     var userScore = 0
     var secondUntilFinished = 0 // Eklendi
-
+    var matchCount=2
+    private lateinit var timer: CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_easy_single)
         textView = findViewById(R.id.Time1)
         score = findViewById(R.id.Score1)
-        object : CountDownTimer(45000, 1000) {
+        timer =object : CountDownTimer(45000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 textView.setText("süre: " + millisUntilFinished / 1000)
@@ -42,6 +44,10 @@ class EasySingle : AppCompatActivity() {
             }
             override fun onFinish() {
                 textView.setText("oyun bitti!")
+                if(matchCount!=0){
+                intent = Intent(applicationContext, Result::class.java)
+                intent.putExtra("score",userScore.toString())
+                startActivity(intent)}
             }
         }.start()
         val card_matrix = ArrayList<ArrayList<Int>>()
@@ -79,7 +85,7 @@ class EasySingle : AppCompatActivity() {
         println(homeList)
         println(card_home)
 
-
+        playsound()
 
         for (i in 0..1)
         {
@@ -199,7 +205,7 @@ class EasySingle : AppCompatActivity() {
         { homeScore = 1 }
 
         if (harry[position1].identifier == harry[position2].identifier) {
-
+            matchCount=matchCount-1
             Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
@@ -209,6 +215,14 @@ class EasySingle : AppCompatActivity() {
             userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
             println("Score" + userScore)
             score.setText("Score:"+userScore)
+
+            if (matchCount==0)
+            {
+                playSound(R.raw.congratulations)
+                intent = Intent(applicationContext, Result::class.java)
+                intent.putExtra("score",userScore.toString())
+                startActivity(intent)
+            }
 
         }else
         {
@@ -260,8 +274,14 @@ class EasySingle : AppCompatActivity() {
     fun stop(){
         if(mediaPlayer?.isPlaying==true) {
 
-            mediaPlayer?.pause()
+            mediaPlayer?.stop()
         }
+
+    }
+    public override fun onStop() {
+        super.onStop()
+        timer.cancel()
+        mediaPlayer!!.stop()
 
     }
 }

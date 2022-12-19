@@ -10,26 +10,34 @@
         android:id="@+id/Time1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="124dp"
-        android:text="süre:60"
 
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="36dp"
+        android:text="süre:60"
         android:textColor="#ff0000"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.703" />
 
     <TextView
         android:id="@+id/Score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="16dp"
 
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="36dp"
         android:text="score:0"
         android:textColor="#00ff00"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/switch4"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintStart_toEndOf="@+id/Time1"
         app:layout_constraintTop_toBottomOf="@+id/switch4" />
 
     <TableLayout
@@ -38,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="191dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -306,9 +314,14 @@
         android:id="@+id/switch4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="20dp"
-        android:text="Switch"
-        app:layout_constraintBottom_toTopOf="@+id/Time1"
-        app:layout_constraintStart_toEndOf="@+id/Time1" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="23dp"
+        android:checked="true"
+        android:text="ses"
+        app:layout_constraintBottom_toTopOf="@+id/Score1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
