@@ -1,5 +1,6 @@
 package com.example.harrypotter
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
@@ -13,6 +14,7 @@ import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_hard_multi.*
+import java.io.FileOutputStream
 import java.util.*
 
 class HardMulti : AppCompatActivity() {
@@ -132,6 +134,11 @@ class HardMulti : AppCompatActivity() {
 
             }
         }
+
+        val file:String = "data.txt"
+        val fileOutputStream: FileOutputStream
+        fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
+        fileOutputStream.write(card_home.toString().toByteArray())
     }
     private fun updateViews() {
         harry.forEachIndexed { index, card ->

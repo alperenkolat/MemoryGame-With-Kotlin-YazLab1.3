@@ -1,6 +1,7 @@
 package com.example.harrypotter
 
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
@@ -14,6 +15,7 @@ import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_medium_single.*
+import java.io.FileOutputStream
 import java.util.*
 
 class MediumSingle : AppCompatActivity() {
@@ -138,7 +140,17 @@ class MediumSingle : AppCompatActivity() {
 
             }
         }
-    }
+
+        val file:String = "data.txt"
+        val fileOutputStream: FileOutputStream
+        fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
+        fileOutputStream.write(card_home.toString().toByteArray())
+        //fileOutputStream.write(homeList.toString().toByteArray())
+        // println(getFilesDir())
+
+
+
+        }
     private fun updateViews() {
         harry.forEachIndexed { index, card ->
             val button = buttons[index]
@@ -178,6 +190,8 @@ class MediumSingle : AppCompatActivity() {
             }
 
         }
+
+
     }
     private fun updateModels(position: Int) {
         val card = harry[position]
