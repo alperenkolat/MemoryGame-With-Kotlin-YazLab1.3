@@ -183,7 +183,7 @@ class MediumSingle : AppCompatActivity() {
         val card = harry[position]
         // Error checking:
         if (card.isFaceUp) {
-            Toast.makeText(this, "Invalid move!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "HATALI EŞLEŞME!", Toast.LENGTH_SHORT).show()
             return
         }
         // Three cases
@@ -222,7 +222,7 @@ class MediumSingle : AppCompatActivity() {
 
         if (harry[position1].identifier == harry[position2].identifier) {
             matchCount=matchCount-1
-            Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "EŞLEŞME!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
             playSound(R.raw.happy)
@@ -235,6 +235,7 @@ class MediumSingle : AppCompatActivity() {
             {
                 intent = Intent(applicationContext, Result::class.java)
                 intent.putExtra("score",userScore.toString())
+                intent.putExtra("win","1")
                 startActivity(intent)
             }
 
@@ -296,6 +297,7 @@ class MediumSingle : AppCompatActivity() {
         super.onStop()
         timer.cancel()
         mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
 
     }
 }

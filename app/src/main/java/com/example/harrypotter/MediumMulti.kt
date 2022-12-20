@@ -19,6 +19,7 @@ import java.util.*
 class MediumMulti : AppCompatActivity() {
     lateinit var textView : TextView
     lateinit var score:TextView
+    lateinit var score2:TextView
     private lateinit var buttons: List<ImageView>
     private lateinit var harry: List<Mem>
     private var indexOfSingleSelectedCard: Int? = null
@@ -37,6 +38,7 @@ class MediumMulti : AppCompatActivity() {
         setContentView(R.layout.activity_medium_multi)
         textView = findViewById(R.id.Time1)
         score = findViewById(R.id.Score1)
+        score2=findViewById(R.id.Score2)
         timer =object : CountDownTimer(60000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
@@ -47,8 +49,10 @@ class MediumMulti : AppCompatActivity() {
                 textView.setText("oyun bitti!")
                 if(matchCount!=0){
                 intent = Intent(applicationContext, Result::class.java)
-                intent.putExtra("score",userScore.toString())
-                startActivity(intent)}
+                    intent.putExtra("score","\n score:"+userScore[0].toString()+"\n score2:"+userScore[1].toString())
+
+                startActivity(intent)
+                }
             }
         }.start()
         val card_matrix = ArrayList<ArrayList<Int>>()
@@ -182,7 +186,7 @@ class MediumMulti : AppCompatActivity() {
         val card = harry[position]
         // Error checking:
         if (card.isFaceUp) {
-            Toast.makeText(this, "Invalid move!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "HATALI EŞLEŞME!", Toast.LENGTH_SHORT).show()
             return
         }
         // Three cases
@@ -220,7 +224,7 @@ class MediumMulti : AppCompatActivity() {
 
         if (harry[position1].identifier == harry[position2].identifier) {
             matchCount=matchCount-1
-            Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "EŞLEŞME!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
             playSound(R.raw.happy)
@@ -229,12 +233,14 @@ class MediumMulti : AppCompatActivity() {
             userScore[orderFlag] += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
 
 
-            score.setText("Score:"+userScore[orderFlag])
+            score.setText("score:"+userScore[0])
+            score2.setText("score2:"+userScore[1])
 
             if (matchCount==0)
             {
                 intent = Intent(applicationContext, Result::class.java)
-                intent.putExtra("score",userScore.toString())
+                intent.putExtra("score","\n score:"+userScore[0].toString()+"\n score2:"+userScore[1].toString())
+                intent.putExtra("win","1")
                 startActivity(intent)
             }
 
@@ -263,7 +269,9 @@ class MediumMulti : AppCompatActivity() {
                 orderFlag = orderFlag xor 1
             }
 
-            score.setText("Score:"+userScore[orderFlag])
+
+            score.setText("score:"+userScore[0])
+            score2.setText("score2:"+userScore[1])
 
 
         }
@@ -301,6 +309,9 @@ class MediumMulti : AppCompatActivity() {
         super.onStop()
         timer.cancel()
         mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
 
+        mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
     }
 }

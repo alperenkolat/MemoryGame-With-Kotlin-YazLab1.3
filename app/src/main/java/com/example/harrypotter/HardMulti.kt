@@ -19,6 +19,8 @@ class HardMulti : AppCompatActivity() {
     lateinit var textView : TextView
     private lateinit var buttons: List<ImageView>
     private lateinit var harry: List<Mem>
+    lateinit var score:TextView
+    lateinit var score2:TextView
     private var indexOfSingleSelectedCard: Int? = null
     var randomCards = ArrayList<Int>()
     var homeList = ArrayList<Int>()
@@ -36,6 +38,8 @@ class HardMulti : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hard_multi)
         textView = findViewById(R.id.Time1)
+        score = findViewById(R.id.Score1)
+        score2=findViewById(R.id.Score2)
         playsound()
         timer =  object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -47,8 +51,10 @@ class HardMulti : AppCompatActivity() {
                 textView.setText("oyun bitti!")
                 if(matchCount!=0){
                 intent = Intent(applicationContext, Result::class.java)
-               // intent.putExtra("score",userScore.toString())
-                startActivity(intent)}
+                    intent.putExtra("score","\n score:"+userScore[0].toString()+"\n score2:"+userScore[1].toString())
+
+                startActivity(intent)
+                }
             }
         }.start()
 
@@ -172,7 +178,7 @@ class HardMulti : AppCompatActivity() {
         val card = harry[position]
         // Error checking:
         if (card.isFaceUp) {
-            Toast.makeText(this, "Invalid move!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "HATALI EŞLEŞME!", Toast.LENGTH_SHORT).show()
             return
         }
         // Three cases
@@ -210,7 +216,7 @@ class HardMulti : AppCompatActivity() {
 
         if (harry[position1].identifier == harry[position2].identifier) {
             matchCount=matchCount-1
-            Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "EŞLEŞME!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
             playSound(R.raw.happy)
@@ -218,11 +224,14 @@ class HardMulti : AppCompatActivity() {
             userScore[orderFlag] += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
 
             //score.setText("Score:"+userScore[orderFlag])
+            score.setText("score:"+userScore[0])
+            score2.setText("score2:"+userScore[1])
 
             if (matchCount==0)
             {
                 intent = Intent(applicationContext, Result::class.java)
-              //  intent.putExtra("score",userScore.toString())
+                intent.putExtra("score","\n score:"+userScore[0].toString()+"\n score2:"+userScore[1].toString())
+                intent.putExtra("win","1")
                 startActivity(intent)
             }
 
@@ -251,13 +260,17 @@ class HardMulti : AppCompatActivity() {
                 orderFlag = orderFlag xor 1
             }
 
-            //score.setText("Score:"+userScore[orderFlag])
+
+            score.setText("score:"+userScore[0])
+            score2.setText("score2:"+userScore[1])
 
         }
 
         cardScore[0] = 0 //Sıfırladık
         cardScore[2] = 0
         println("Score" + userScore)
+        score.setText("score:"+userScore[0])
+        score2.setText("score2:"+userScore[1])
     }
     fun playSound( soundType: Int){
 
@@ -285,6 +298,8 @@ class HardMulti : AppCompatActivity() {
         super.onStop()
         timer.cancel()
         mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
 
     }
+
 }

@@ -26,6 +26,7 @@ class EasySingle : AppCompatActivity() {
     var homeList = ArrayList<Int>()
     val db = Firebase.firestore
     var mediaPlayer :MediaPlayer?=null
+    var mediaPlayer1 :MediaPlayer?=null
     var cardScore = ArrayList(Arrays.asList(0,0,0,0)) //Eklendi
     var userScore = 0
     var secondUntilFinished = 0 // Eklendi
@@ -167,7 +168,7 @@ class EasySingle : AppCompatActivity() {
         val card = harry[position]
         // Error checking:
         if (card.isFaceUp) {
-            Toast.makeText(this, "Invalid move!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "HATALI EŞLEŞME!", Toast.LENGTH_SHORT).show()
             return
         }
         // Three cases
@@ -206,7 +207,7 @@ class EasySingle : AppCompatActivity() {
 
         if (harry[position1].identifier == harry[position2].identifier) {
             matchCount=matchCount-1
-            Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "EŞLEŞME!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
             playSound(R.raw.happy)
@@ -218,9 +219,13 @@ class EasySingle : AppCompatActivity() {
 
             if (matchCount==0)
             {
-                playSound(R.raw.congratulations)
+                mediaPlayer1?.stop()
+                mediaPlayer1?.reset()
+
+
                 intent = Intent(applicationContext, Result::class.java)
                 intent.putExtra("score",userScore.toString())
+                intent.putExtra("win","1")
                 startActivity(intent)
             }
 
@@ -254,10 +259,11 @@ class EasySingle : AppCompatActivity() {
         cardScore[0] = 0 //Sıfırladık
     }
     fun playSound( soundType: Int){
-
-        mediaPlayer= MediaPlayer.create(this,soundType)
-        mediaPlayer!!.isLooping=false
-        mediaPlayer!!.start()
+        if (mediaPlayer1 == null){
+        mediaPlayer1= MediaPlayer.create(this,soundType)
+        mediaPlayer1!!.isLooping=false
+        mediaPlayer1!!.start()
+        }
 
     }
     fun playsound(){
@@ -274,14 +280,21 @@ class EasySingle : AppCompatActivity() {
     fun stop(){
         if(mediaPlayer?.isPlaying==true) {
 
-            mediaPlayer?.stop()
+            mediaPlayer1!!.stop()
+            mediaPlayer1!!.reset()
+            mediaPlayer!!.stop()
+            mediaPlayer!!.reset()
+
         }
 
     }
     public override fun onStop() {
         super.onStop()
         timer.cancel()
+        mediaPlayer1!!.stop()
+        mediaPlayer1!!.reset()
         mediaPlayer!!.stop()
+        mediaPlayer!!.reset()
 
     }
 }
