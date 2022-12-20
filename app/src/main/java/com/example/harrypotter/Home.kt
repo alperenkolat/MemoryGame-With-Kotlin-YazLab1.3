@@ -41,9 +41,10 @@ class Home : AppCompatActivity() {
             else
                 stop()
         }
-
-
-
+        button2.setOnClickListener() {
+            intent = Intent(applicationContext, PasswordChange::class.java)
+            startActivity(intent)
+        }
     }
     fun playsound(){
         if (mediaPlayer == null){
