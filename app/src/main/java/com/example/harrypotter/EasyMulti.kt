@@ -29,7 +29,8 @@ class EasyMulti : AppCompatActivity() {
     val db = Firebase.firestore
     var mediaPlayer :MediaPlayer?=null
     var cardScore = ArrayList(Arrays.asList(0,0,0,0)) //Eklendi
-    var userScore = 0
+    var userScore = ArrayList(Arrays.asList(0,0)) //Eklendi
+    var orderFlag = 0
     var secondUntilFinished = 0 // Eklendi
     private lateinit var timer: CountDownTimer
 
@@ -217,9 +218,9 @@ class EasyMulti : AppCompatActivity() {
             playSound(R.raw.happy)
 
 
-            userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
+            userScore[orderFlag] += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
             println("Score" + userScore)
-            score.setText("Score:"+userScore)
+            score.setText("Score:"+userScore[orderFlag])
 
             if (matchCount==0)
             {
@@ -234,7 +235,8 @@ class EasyMulti : AppCompatActivity() {
 
             if(cardScore[1] == cardScore[3] )
             {
-                userScore -= (cardScore[0] + cardScore[2]/homeScore) * ((60 - secondUntilFinished)/10)
+                userScore[orderFlag] -= (cardScore[0] + cardScore[2]/homeScore) * ((60 - secondUntilFinished)/10)
+                orderFlag = orderFlag xor 1
             }
             else
             {
@@ -248,9 +250,11 @@ class EasyMulti : AppCompatActivity() {
                 else
                 { homeScore *= 1 }
 
-                userScore -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
+                userScore[orderFlag] -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
+                orderFlag = orderFlag xor 1
+
             }
-            score.setText("Score:"+userScore)
+            score.setText("Score:"+userScore[orderFlag])
             println("Score" + userScore)
 
         }

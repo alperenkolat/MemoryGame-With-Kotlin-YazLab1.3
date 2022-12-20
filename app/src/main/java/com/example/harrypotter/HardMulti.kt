@@ -25,6 +25,12 @@ class HardMulti : AppCompatActivity() {
     val db = Firebase.firestore
     var mediaPlayer : MediaPlayer?=null
     var matchCount=18
+
+    var cardScore = ArrayList(Arrays.asList(0,0,0,0)) //Eklendi
+    var userScore = ArrayList(Arrays.asList(0,0)) //Eklendi
+    var orderFlag = 0
+    var secondUntilFinished = 0 // Eklendi
+
     private lateinit var timer: CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,8 @@ class HardMulti : AppCompatActivity() {
         timer =  object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 textView.setText("süre: " + millisUntilFinished / 1000)
+                secondUntilFinished = (millisUntilFinished / 1000).toInt() // Eklendi
+
             }
             override fun onFinish() {
                 textView.setText("oyun bitti!")
@@ -135,6 +143,18 @@ class HardMulti : AppCompatActivity() {
                             val imageBytes = Base64.decode(document.get("cardImage") as String, Base64.DEFAULT)
                             val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
                             button.setImageBitmap(decodedImage)
+
+                            if(cardScore[0] == 0)
+                            {
+                                cardScore[0] = (document.get("cardScore").toString()).toInt()
+                                cardScore[1] = homeList[index]
+                            }
+                            else
+                            {
+                                cardScore[2] =  (document.get("cardScore").toString()).toInt()
+                                cardScore[3] = homeList[index]
+                            }
+
                         }
                     }.addOnFailureListener{
                         println("başarısız")
@@ -180,12 +200,25 @@ class HardMulti : AppCompatActivity() {
     }
 
     private fun checkForMatch(position1: Int, position2: Int) {
+        var homeScore = 0
+
+
+        if(cardScore[1] == 1 || cardScore[1] == 2 )
+        { homeScore = 2 }
+        else
+        { homeScore = 1 }
+
         if (harry[position1].identifier == harry[position2].identifier) {
             matchCount=matchCount-1
             Toast.makeText(this, "Match found!!", Toast.LENGTH_SHORT).show()
             harry[position1].isMatched = true
             harry[position2].isMatched = true
             playSound(R.raw.happy)
+
+            userScore[orderFlag] += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
+
+            //score.setText("Score:"+userScore[orderFlag])
+
             if (matchCount==0)
             {
                 intent = Intent(applicationContext, Result::class.java)
@@ -196,7 +229,35 @@ class HardMulti : AppCompatActivity() {
         }else
         {
             playSound(R.raw.shocked_sound_effect)
+
+            if(cardScore[1] == cardScore[3] )
+            {
+                userScore[orderFlag] -= (cardScore[0] + cardScore[2]/homeScore) * ((60 - secondUntilFinished)/10)
+                orderFlag = orderFlag xor 1
+            }
+            else
+            {
+                if(cardScore[1] == 1 || cardScore[1] == 2 )
+                { homeScore = 2 }
+                else
+                { homeScore = 1 }
+
+                if(cardScore[3] == 1 || cardScore[3] == 2 )
+                { homeScore *= 2 }
+                else
+                { homeScore *= 1 }
+
+                userScore[orderFlag] -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
+                orderFlag = orderFlag xor 1
+            }
+
+            //score.setText("Score:"+userScore[orderFlag])
+
         }
+
+        cardScore[0] = 0 //Sıfırladık
+        cardScore[2] = 0
+        println("Score" + userScore)
     }
     fun playSound( soundType: Int){
 

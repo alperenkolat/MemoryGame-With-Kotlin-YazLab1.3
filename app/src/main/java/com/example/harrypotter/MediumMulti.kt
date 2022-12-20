@@ -27,7 +27,8 @@ class MediumMulti : AppCompatActivity() {
     val db = Firebase.firestore
     var mediaPlayer :MediaPlayer?=null
     var cardScore = ArrayList(Arrays.asList(0,0,0,0)) //Eklendi
-    var userScore = 0
+    var userScore = ArrayList(Arrays.asList(0,0)) //Eklendi
+    var orderFlag = 0
     var secondUntilFinished = 0 // Eklendi
     var matchCount=8
     private lateinit var timer: CountDownTimer
@@ -210,7 +211,6 @@ class MediumMulti : AppCompatActivity() {
 
     private fun checkForMatch(position1: Int, position2: Int) {
         var homeScore = 0
-        //while(cardScore[2] != 0)
 
 
         if(cardScore[1] == 1 || cardScore[1] == 2 )
@@ -226,9 +226,11 @@ class MediumMulti : AppCompatActivity() {
             playSound(R.raw.happy)
 
 
-            userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
-            println("Score" + userScore)
-            score.setText("Score:"+userScore)
+            userScore[orderFlag] += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
+
+
+            score.setText("Score:"+userScore[orderFlag])
+
             if (matchCount==0)
             {
                 intent = Intent(applicationContext, Result::class.java)
@@ -242,7 +244,8 @@ class MediumMulti : AppCompatActivity() {
 
             if(cardScore[1] == cardScore[3] )
             {
-                userScore -= (cardScore[0] + cardScore[2]/homeScore) * ((60 - secondUntilFinished)/10)
+                userScore[orderFlag] -= (cardScore[0] + cardScore[2]/homeScore) * ((60 - secondUntilFinished)/10)
+                orderFlag = orderFlag xor 1
             }
             else
             {
@@ -256,14 +259,18 @@ class MediumMulti : AppCompatActivity() {
                 else
                 { homeScore *= 1 }
 
-                userScore -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
+                userScore[orderFlag] -= (((cardScore[0] + cardScore[2])/2) * homeScore) *  ((60 - secondUntilFinished)/10)
+                orderFlag = orderFlag xor 1
             }
-            score.setText("Score:"+userScore)
-            println("Score" + userScore)
+
+            score.setText("Score:"+userScore[orderFlag])
+
 
         }
 
         cardScore[0] = 0 //Sıfırladık
+        cardScore[2] = 0
+        println("Score" + userScore)
     }
     fun playSound( soundType: Int){
 
