@@ -241,6 +241,7 @@ class MediumSingle : AppCompatActivity() {
             harry[position2].isMatched = true
             playSound(R.raw.happy)
 
+            if(secondUntilFinished <10) secondUntilFinished = 10
 
             userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
             println("Score" + userScore)

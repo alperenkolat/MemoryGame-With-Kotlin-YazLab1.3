@@ -221,6 +221,7 @@ class HardSingle : AppCompatActivity() {
             harry[position1].isMatched = true
             harry[position2].isMatched = true
 
+            if(secondUntilFinished <10) secondUntilFinished = 10
             userScore += (2*cardScore[0]*homeScore) * (secondUntilFinished/10)
             println("Score" + userScore)
 
